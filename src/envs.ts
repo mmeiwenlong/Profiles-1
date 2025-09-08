@@ -32,6 +32,16 @@ let value = {
   rss: {
     url: env.RSS_URL,
   },
+  email: {
+    smtp_host: env.EMAIL_SMTP_HOST,
+    smtp_port: env.EMAIL_SMTP_PORT,
+    smtp_secure: env.EMAIL_SMTP_SECURE,
+    smtp_user: env.EMAIL_SMTP_USER,
+    smtp_pass: env.EMAIL_SMTP_PASS,
+    mail_from: env.EMAIL_MAIL_FROM,
+    mail_to: env.EMAIL_MAIL_TO,
+    max_attach_mb: env.EMAIL_MAX_ATTACH_MB,
+  },
 };
 
 const envs = {
