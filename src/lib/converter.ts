@@ -1,6 +1,6 @@
 import { EPub } from "@lesjoursfr/html-to-epub";
 import CloudConvert from "cloudconvert";
-import envs from "@/envs";
+import envs from "../envs";
 
 class FileConvertError extends Error {
   constructor(message: string) {
@@ -29,11 +29,12 @@ const getLanguage = (title: string) => {
   }
   return englishCount >= chineseCount ? "en" : "zh";
 };
-export const htmlToEpub = async (title: string, content: string) => {
+export const htmlToEpub = async (title: string, author: string, content: string) => {
   const options = {
     title: title,
     description: title,
     lang: getLanguage(title),
+    author: author,
     content: [
       {
         title: title,
@@ -43,7 +44,7 @@ export const htmlToEpub = async (title: string, content: string) => {
     ],
     tempDir: "/tmp",
   };
-  const output = "/tmp/output.epub";
+  const output = `/tmp/${title}.epub`;
   const epub = new EPub(options, output);
   try {
     await epub.render();
